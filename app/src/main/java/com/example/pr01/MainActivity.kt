@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pr01.data.ProductViewModul
+import com.example.pr01.data.Recipe
+import com.example.pr01.data.RecipeViewModul
 import com.example.pr01.ui.theme.Pr01Theme
 
 class MainActivity : ComponentActivity() {
@@ -20,8 +22,31 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val productViewModul: ProductViewModul = viewModel()
-            productViewModul.fetchproducts()
+            //ПР01
+            //val productViewModul: ProductViewModul = viewModel()
+            //productViewModul.fetchproducts()
+
+            //ПР02
+            val recipeViewModul: RecipeViewModul = viewModel()
+
+            val recipe = Recipe(
+                name = "Запеченный лосось в лимонно-горчичном маринаде",
+                ingredients = listOf(
+                    "Стейк или филе лосося",
+                    "Лимонный сок",
+                    "Горчица дижонская",
+                    "Оливковое масло",
+                    "Мед",
+                    "Чеснок",
+                    "Соль",
+                    "Свежемолотый черный перец"
+                ),
+                difficulty = "Easy",
+                caloriesPerServing = 420
+            )
+
+            recipeViewModul.addRecipe(recipe)
+
         }
     }
 }
