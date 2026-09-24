@@ -1,8 +1,6 @@
-package com.example.pr01.data
+package com.example.pr01.data.model
 
-import android.icu.text.CaseMap
-
-data class products(
+data class Products(
     val id: Int,
     val title: String,
     val rating: Double,

@@ -1,17 +1,16 @@
-package com.example.pr01.data
+package com.example.pr01.ui.viewModel
 
-import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pr01.service.RetrofitClient
+import com.example.pr01.data.RetrofitClient
 import kotlinx.coroutines.launch
 
 class ProductViewModul: ViewModel() {
     fun fetchproducts(){
         viewModelScope.launch {
             try {
-                val productResponse = RetrofitClient.retrofitAPI.getproducts()
+                val productResponse = RetrofitClient.retrofitAPI.getProducts()
                 val products = productResponse.products
                 for (product in products)
                 {

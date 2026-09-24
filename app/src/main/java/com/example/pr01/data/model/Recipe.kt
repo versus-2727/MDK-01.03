@@ -1,4 +1,4 @@
-package com.example.pr01.data
+package com.example.pr01.data.model
 
 data class Recipe(
     val id: Int? = null,

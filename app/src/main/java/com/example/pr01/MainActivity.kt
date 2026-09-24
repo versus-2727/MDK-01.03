@@ -4,18 +4,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.pr01.data.ProductViewModul
-import com.example.pr01.data.Recipe
-import com.example.pr01.data.RecipeViewModul
+import com.example.pr01.data.model.Company
+import com.example.pr01.data.model.Recipe
+import com.example.pr01.data.model.User
+import com.example.pr01.ui.viewModel.UserViewModel
 import com.example.pr01.ui.theme.Pr01Theme
+import com.example.pr01.ui.viewModel.ProductViewModul
+import com.example.pr01.ui.viewModel.RecipeViewModul
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +23,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             //ПР01
-            //val productViewModul: ProductViewModul = viewModel()
-            //productViewModul.fetchproducts()
+//            val productViewModul: ProductViewModul = viewModel()
+//            productViewModul.fetchproducts()
 
             //ПР02
             val recipeViewModul: RecipeViewModul = viewModel()
@@ -46,6 +46,21 @@ class MainActivity : ComponentActivity() {
             )
 
             recipeViewModul.addRecipe(recipe)
+
+
+            //ПР03
+//            val userViewModel: UserViewModel = viewModel()
+//            val updatedUser = User(
+//                id = 89,
+//                firstName = "Олег",
+//                lastName = "Павлов",
+//                company = Company(
+//                    name = "Интел",
+//                    title = "Менеджер по продажам"
+//                )
+//            )
+//
+//            userViewModel.fetchAndUpdateUser(89, updatedUser)
 
         }
     }
