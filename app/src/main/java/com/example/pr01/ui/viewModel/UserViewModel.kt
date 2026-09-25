@@ -11,11 +11,10 @@ class UserViewModel: ViewModel() {
     var userBefore: User? = null
     var userAfter: User? = null
 
-    // Метод теперь принимает userId и готовый объект updatedUser
     fun fetchAndUpdateUser(userId: Int, updatedUser: User) {
         viewModelScope.launch {
             try {
-                // 1. Получаем данные пользователя до редактирования
+                //до редактирования
                 userBefore = RetrofitClient.userAPI.getUser(userId)
                 Log.d(
                     "UserViewModel",
@@ -23,13 +22,15 @@ class UserViewModel: ViewModel() {
                             "Компания: ${userBefore?.company?.name}, Должность: ${userBefore?.company?.title}"
                 )
 
-                // 2. Отправляем запрос на обновление с переданными из Activity данными
+                //после редактирования
                 userAfter = RetrofitClient.userAPI.updateUser(userId, updatedUser)
-                Log.d(
-                    "UserViewModel",
-                    "ПОСЛЕ редактирования: ${userAfter?.firstName} ${userAfter?.lastName}, " +
-                            "Компания: ${userAfter?.company?.name}, Должность: ${userAfter?.company?.title}"
-                )
+                if (userAfter != null) {
+                    Log.d(
+                        "UserViewModel",
+                        "ПОСЛЕ редактирования: ${userAfter?.firstName} ${userAfter?.lastName}, " +
+                                "Компания: ${userAfter?.company?.name}, Должность: ${userAfter?.company?.title}"
+                    )
+                }
 
             } catch (e: Exception) {
                 Log.e("UserViewModel", "Ошибка при работе с пользователем: ${e.message}", e)

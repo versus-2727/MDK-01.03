@@ -27,40 +27,40 @@ class MainActivity : ComponentActivity() {
 //            productViewModul.fetchproducts()
 
             //ПР02
-            val recipeViewModul: RecipeViewModul = viewModel()
-
-            val recipe = Recipe(
-                name = "Запеченный лосось в лимонно-горчичном маринаде",
-                ingredients = listOf(
-                    "Стейк или филе лосося",
-                    "Лимонный сок",
-                    "Горчица дижонская",
-                    "Оливковое масло",
-                    "Мед",
-                    "Чеснок",
-                    "Соль",
-                    "Свежемолотый черный перец"
-                ),
-                difficulty = "Easy",
-                caloriesPerServing = 420
-            )
-
-            recipeViewModul.addRecipe(recipe)
+//            val recipeViewModul: RecipeViewModul = viewModel()
+//
+//            val recipe = Recipe(
+//                name = "Запеченный лосось в лимонно-горчичном маринаде",
+//                ingredients = listOf(
+//                    "Стейк или филе лосося",
+//                    "Лимонный сок",
+//                    "Горчица дижонская",
+//                    "Оливковое масло",
+//                    "Мед",
+//                    "Чеснок",
+//                    "Соль",
+//                    "Свежемолотый черный перец"
+//                ),
+//                difficulty = "Easy",
+//                caloriesPerServing = 420
+//            )
+//
+//            recipeViewModul.addRecipe(recipe)
 
 
             //ПР03
-//            val userViewModel: UserViewModel = viewModel()
-//            val updatedUser = User(
-//                id = 89,
-//                firstName = "Олег",
-//                lastName = "Павлов",
-//                company = Company(
-//                    name = "Интел",
-//                    title = "Менеджер по продажам"
-//                )
-//            )
-//
-//            userViewModel.fetchAndUpdateUser(89, updatedUser)
+            val userViewModel: UserViewModel = viewModel()
+            val updatedUser = User(
+                id = 89,
+                firstName = "Олег",
+                lastName = "Павлов",
+                company = Company(
+                    name = "Интел",
+                    title = "Менеджер по продажам"
+                )
+            )
+
+            userViewModel.fetchAndUpdateUser(89, updatedUser)
 
         }
     }
