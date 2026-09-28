@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             //ПР01
 //            val productViewModul: ProductViewModul = viewModel()
-//            productViewModul.fetchproducts()
+//            productViewModul.updateProducts()
 
             //ПР02
 //            val recipeViewModul: RecipeViewModul = viewModel()
@@ -49,18 +49,12 @@ class MainActivity : ComponentActivity() {
 
 
             //ПР03
-            val userViewModel: UserViewModel = viewModel()
-            val updatedUser = User(
-                id = 89,
-                firstName = "Олег",
-                lastName = "Павлов",
-                company = Company(
-                    name = "Интел",
-                    title = "Менеджер по продажам"
-                )
-            )
+//            val userViewModel: UserViewModel = viewModel()
+//            userViewModel.fetchAndUpdateUser()
 
-            userViewModel.fetchAndUpdateUser(89, updatedUser)
+            //ПР04
+            val productViewModel: ProductViewModul = viewModel()
+            productViewModel.deleteProduct(12)
 
         }
     }

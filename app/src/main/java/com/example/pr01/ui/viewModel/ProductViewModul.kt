@@ -7,7 +7,7 @@ import com.example.pr01.data.RetrofitClient
 import kotlinx.coroutines.launch
 
 class ProductViewModul: ViewModel() {
-    fun fetchproducts(){
+    fun updateProducts(){
         viewModelScope.launch {
             try {
                 val productResponse = RetrofitClient.retrofitAPI.getProducts()
@@ -21,6 +21,23 @@ class ProductViewModul: ViewModel() {
                 Log.e("ProductViewModul", "${e.message}", e)
             }
         }
+    }
+
+    fun deleteProduct(id:Int){
+        viewModelScope.launch {
+            try {
+                val product = RetrofitClient.retrofitAPI.deletedProduct(id)
+                Log.d("ProductViewModel", "${product.id}\n$" +
+                        "${product.title}\n${product.rating}\n" +
+                        "${product.brand}\n" +
+                        "${product.isDeleted}")
+
+            }catch (e: Exception)
+            {
+                Log.e("ProductViewModel","${e.message}", e)
+            }
+        }
+
     }
 
 }
