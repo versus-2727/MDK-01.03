@@ -10,10 +10,12 @@ import kotlinx.coroutines.launch
 
 class UserViewModel: ViewModel() {
 
-    fun fetchAndUpdateUser() {
+    fun UpdateUser() {
         viewModelScope.launch {
             try {
+
                 val userBefore = RetrofitClient.userAPI.getUser(89)
+
 
                 Log.d("UserViewModel", "ДО редактирования:\n" +
                         "Имя: ${userBefore.firstName} ${userBefore.lastName}\n" +
@@ -21,7 +23,7 @@ class UserViewModel: ViewModel() {
                         "Должность: ${userBefore.company.title}"
                 )
 
-                val updatedUser = userBefore.copy(
+                val localUpdatedUser = userBefore.copy(
                     firstName = "Олег",
                     lastName = "Павлов",
                     company = Company(
@@ -29,15 +31,18 @@ class UserViewModel: ViewModel() {
                         title = "Менеджер по продажам"
                     )
                 )
+                if (userBefore.id != null) {
+                    val responseUser =
+                        RetrofitClient.userAPI.updateUser(userBefore.id, localUpdatedUser)
 
-                    if (updatedUser != null) {
-                        Log.d("UserViewModel", "ПОСЛЕ редактирования:\n" +
-                                "Имя: ${updatedUser.firstName} ${updatedUser.lastName}\n" +
-                                "Компания: ${updatedUser.company.name}\n" +
-                                "Должность: ${updatedUser.company.title}"
-                        )
-                    }
 
+                    Log.d(
+                        "UserViewModel", "ПОСЛЕ редактирования:\n" +
+                                "Имя: ${responseUser.firstName} ${responseUser.lastName}\n" +
+                                "Компания: ${responseUser.company.name}\n" +
+                                "Должность: ${responseUser.company.title}"
+                    )
+                }
 
             } catch (e: Exception) {
                 Log.e("UserViewModel", "Ошибка при работе с пользователем: ${e.message}", e)

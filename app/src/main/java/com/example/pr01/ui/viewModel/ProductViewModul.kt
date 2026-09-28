@@ -27,10 +27,10 @@ class ProductViewModul: ViewModel() {
         viewModelScope.launch {
             try {
                 val product = RetrofitClient.retrofitAPI.deletedProduct(id)
-                Log.d("ProductViewModel", "${product.id}\n$" +
-                        "${product.title}\n${product.rating}\n" +
-                        "${product.brand}\n" +
-                        "${product.isDeleted}")
+                Log.d("ProductViewModel", "Товар удален:\n"+ "ID: ${product.id}\n" +
+                        "Название: ${product.title}\nРэйтинг: ${product.rating}\n" +
+                        "Брэнд: ${product.brand}\n" +
+                        "IsDeleted: ${product.isDeleted}")
 
             }catch (e: Exception)
             {

@@ -7,15 +7,16 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import java.net.Proxy
+import java.net.InetSocketAddress
 object RetrofitClient {
-    //val proxy = Proxy(Proxy.Type.HTTP, InetSocketAddress("10.207.106.59",3128))
+    val proxy = Proxy(Proxy.Type.HTTP, InetSocketAddress("10.207.106.59",3128))
     val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
     val okHttpClient = OkHttpClient.Builder()
-      //  .proxy(proxy)
+        .proxy(proxy)
         .addInterceptor (loggingInterceptor)
         .build()
 

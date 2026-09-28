@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
 
             //ПР03
 //            val userViewModel: UserViewModel = viewModel()
-//            userViewModel.fetchAndUpdateUser()
+//            userViewModel.UpdateUser()
 
             //ПР04
             val productViewModel: ProductViewModul = viewModel()
