@@ -10,10 +10,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pr01.data.model.Company
+import com.example.pr01.data.model.LoginRequest
 import com.example.pr01.data.model.Recipe
 import com.example.pr01.data.model.User
 import com.example.pr01.ui.viewModel.UserViewModel
 import com.example.pr01.ui.theme.Pr01Theme
+import com.example.pr01.ui.viewModel.LoginViewModel
 import com.example.pr01.ui.viewModel.ProductViewModul
 import com.example.pr01.ui.viewModel.RecipeViewModul
 
@@ -53,8 +55,16 @@ class MainActivity : ComponentActivity() {
 //            userViewModel.UpdateUser()
 
             //ПР04
-            val productViewModel: ProductViewModul = viewModel()
-            productViewModel.deleteProduct(12)
+//            val productViewModel: ProductViewModul = viewModel()
+//            productViewModel.deleteProduct(12)
+
+            //ПР05
+            val loginViewModel: LoginViewModel = viewModel()
+            val lodinUser = LoginRequest(
+                username = "jamesd",
+                password = "jamesdpass"
+            )
+            loginViewModel.login(lodinUser)
 
         }
     }

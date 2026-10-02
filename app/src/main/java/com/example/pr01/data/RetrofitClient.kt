@@ -1,5 +1,6 @@
 package com.example.pr01.data
 
+import com.example.pr01.data.service.AuthService
 import com.example.pr01.data.service.ProductInterface
 import com.example.pr01.data.service.RecipeInterface
 import com.example.pr01.data.service.UserInterface
@@ -29,4 +30,6 @@ object RetrofitClient {
     val retrofitAPI = retrofit.create(ProductInterface::class.java)
     val recipeAPI = retrofit.create(RecipeInterface::class.java)
     val userAPI: UserInterface = retrofit.create(UserInterface::class.java)
+
+    val authAPI: AuthService = retrofit.create(AuthService::class.java)
 }
