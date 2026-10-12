@@ -1,10 +1,10 @@
 package com.example.pr01.data.service
 
-import com.example.pr01.data.model.Recipe
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.GET
+import retrofit2.http.Header
+import com.example.pr01.data.model.Record
 
 interface RecipeInterface {
-    @POST("recipes/add")
-    suspend fun addRecipe(@Body recipe: Recipe): Recipe
+    @GET("recipes/records")
+    suspend fun getRecord(@Header("Authorization") token: String): Record
 }

@@ -4,20 +4,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.pr01.data.model.Company
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.pr01.data.TokenManager
 import com.example.pr01.data.model.LoginRequest
-import com.example.pr01.data.model.Recipe
-import com.example.pr01.data.model.User
-import com.example.pr01.ui.viewModel.UserViewModel
 import com.example.pr01.ui.theme.Pr01Theme
 import com.example.pr01.ui.viewModel.LoginViewModel
-import com.example.pr01.ui.viewModel.ProductViewModul
-import com.example.pr01.ui.viewModel.RecipeViewModul
+import com.example.pr01.ui.viewModel.RecipeViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,16 +58,45 @@ class MainActivity : ComponentActivity() {
 //            productViewModel.deleteProduct(12)
 
             //ПР05
-            val loginViewModel: LoginViewModel = viewModel()
-            val lodinUser = LoginRequest(
-                username = "jamesd",
-                password = "jamesdpass"
+//            val loginViewModel: LoginViewModel = viewModel()
+//            val lodinUser = LoginRequest(
+//                username = "jamesd",
+//                password = "jamesdpass"
+//            )
+//            loginViewModel.login(lodinUser)
+
+            //ПР06
+            val tokenManager = TokenManager(applicationContext)
+
+            val recipeViewModel: RecipeViewModel by viewModels {
+                viewModelFactory {
+                    initializer {
+                        RecipeViewModel(tokenManager)
+                    }
+                }
+            }
+
+            val loginViewModel: LoginViewModel by viewModels {
+                viewModelFactory {
+                    initializer {
+                        LoginViewModel(tokenManager,recipeViewModel )
+                    }
+                }
+            }
+
+            val loginUser = LoginRequest(
+                identity = "artem.podguzkov@gmail.com",
+                password = "123456789"
             )
-            loginViewModel.login(lodinUser)
+            loginViewModel.login(loginUser)
+            recipeViewModel.fetch()
+
+        }
+
 
         }
     }
-}
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

@@ -3,7 +3,6 @@ package com.example.pr01.ui.viewModel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pr01.data.model.User
 import com.example.pr01.data.RetrofitClient
 import com.example.pr01.data.model.Company
 import kotlinx.coroutines.launch
