@@ -65,7 +65,7 @@ class MainActivity : ComponentActivity() {
 //            )
 //            loginViewModel.login(lodinUser)
 
-            //ПР06
+            //ПР05-ПР06
             val tokenManager = TokenManager(applicationContext)
 
             val recipeViewModel: RecipeViewModel by viewModels {
