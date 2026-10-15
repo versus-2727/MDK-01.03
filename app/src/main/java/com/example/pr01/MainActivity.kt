@@ -89,7 +89,6 @@ class MainActivity : ComponentActivity() {
                 password = "123456789"
             )
             loginViewModel.login(loginUser)
-            recipeViewModel.fetch()
 
         }
 

@@ -11,17 +11,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.net.Proxy
 import java.net.InetSocketAddress
 object RetrofitClient {
-    //val proxy = Proxy(Proxy.Type.HTTP, InetSocketAddress("10.207.106.59",3128))
+    val proxy = Proxy(Proxy.Type.HTTP, InetSocketAddress("10.207.106.59",3128))
     val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
     val okHttpClient = OkHttpClient.Builder()
-  //      .proxy(proxy)
+        .proxy(proxy)
         .addInterceptor (loggingInterceptor)
         .build()
 
-    val retrofit = Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
         .baseUrl("https://dummyjson.com/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
@@ -34,8 +34,10 @@ object RetrofitClient {
         .build()
 
     val retrofitAPI = retrofit.create(ProductInterface::class.java)
-    val recipeAPI = retrofit.create(RecipeInterface::class.java)
-    val userAPI: UserInterface = retrofitSwagger.create(UserInterface::class.java)
+    val recipeAPI = retrofitSwagger.create(RecipeInterface::class.java)
+
+        //val userAPI: UserInterface = retrofitSwagger.create(UserInterface::class.java)
 
     val authAPI: AuthService = retrofitSwagger.create(AuthService::class.java)
+
 }
